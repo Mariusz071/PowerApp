@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For now it's only mobile friendly, desktop view will be added in the future.
 
 PowerApp - web application to monitor and store your gym progress and workouts.
 
@@ -13,6 +14,7 @@ Final functionality:
 - pre-defined workouts (for now you can insert only your own workouts)
 - editing workouts and plans
 - to be re-made in React Native
+-desktop view
 
 Best regards,
 Mariusz
