@@ -1,5 +1,5 @@
 .form-wrapper {
-  padding: 1rem;
+  padding: 2rem;
   margin-top: 4rem;
   min-height: 100%;
 }
@@ -11,13 +11,16 @@
   font-size: $default-font-size;
   font-weight: bold;
 
-  &__workout-name {
+  &__workout-name,
+  &__plan-name {
     margin-top: 2rem;
     font-weight: bold;
 
     &-input {
       text-align: center;
       font-size: $default-font-size;
+      color: $color-white;
+      font-weight: bold;
       height: 5rem;
       width: 80%;
       padding: 1rem 2rem;
@@ -25,7 +28,6 @@
       border: none;
       border-bottom: 2px solid $color-white;
       transition: all .2s;
-      color: $color-white;
       &:focus {
         outline: none;
       }
@@ -79,6 +81,7 @@
       background-color: $color-primary;
       color: $color-white;
       transition: all .1s;
+      margin-top: 1rem;
 
       &:hover {
         box-shadow: 0 1rem 2rem rgba($color-black,0.2);

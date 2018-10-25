@@ -14,7 +14,7 @@ class MobileMenu extends Component {
 
         return (
                 <ul className={toggleMenu}>
-                    <li onClick={this.props.hideMenu}><Link to ="/add">Add plan <i className="far fa-plus-square"></i></Link></li>
+                    <li onClick={this.props.hideMenu}><Link to ="/add">Add workout <i className="far fa-plus-square"></i></Link></li>
                     <li onClick={this.props.hideMenu}><Link to="/plans">My plans <i className="far fa-clipboard"></i></Link></li>
                     <li onClick={this.props.hideMenu}><Link to="/workouts">My workouts <i className="fas fa-dumbbell"></i></Link></li>
                     <li onClick={this.props.hideMenu}><Link to="/progress">Progress <i className="fas fa-chart-line"></i></Link></li>

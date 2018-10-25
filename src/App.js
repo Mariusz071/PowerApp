@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {HashRouter, Route, Switch} from "react-router-dom";
 import './assets/sass/index.scss';
 import AddPlans from "./components/AddPlans";
-import CurrentPlans from "./components/AllPlans";
-import Workouts from "./components/Workouts";
+import CurrentPlans from "./components/PlansComponents/AllPlans";
+import Workouts from "./components/WorkoutsComponents/Workouts";
 import Main from "./components/MainComponents/Main";
 import Progress from "./components/Progress"
 import Toolbar from './components/MobileNavigation/toolbar';

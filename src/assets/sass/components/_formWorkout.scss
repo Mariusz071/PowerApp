@@ -1,22 +1,11 @@
-//div className="form-workout">
-//<label className="form-workout--label-wrapper">
-//                                              How would you like to name this workout?
-//<input type="text" className="form-workout--workout-name" onChange={this.handleWorkoutName}/>
-//</label>
-//
-//<label className="form-workout--label-wrapper">
-//                                              How many sets are you up to?
-//<input type="text" className="form--workout-sets" onChange={this.handleSetsChange}/>
-//</label>
-//<button>Add this exercise</button>
-//</div>
 
 .form-workout {
   margin-top: 4rem;
-  padding: 0 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba($color-white, .4);
 
   &--label-wrapper {
     display: flex;
@@ -27,11 +16,11 @@
   }
 
   &--workout-sets,
-  &--exercise-name{
+  &--exercise-name {
     margin: 0 auto;
     text-align: center;
     height: 3rem;
-    color: $color-white;
+    color: $color-black;
     font-size: $default-font-size;
     height: 5rem;
     width: 100%;
@@ -42,6 +31,7 @@
     border-bottom: 2px solid $color-white;
     transition: all .2s;
     color: $color-white;
+    font-weight: bold;
 
     &:focus {
       outline: none;

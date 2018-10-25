@@ -12,12 +12,11 @@ class CreatePlanForm extends Component {
         this.setState({exercises:  [...array]})
     };
 
-    // handleWorkoutsChange = (e) => {
-    //     const val = e.target.value;
-    //     this.setState({
-    //         workoutsChange: val,
-    //     })
-    // };
+    handleGetWorkouts = (e) => {
+        this.setState({
+            exercises: e
+        })
+    };
 
     handleWorkoutName = (e) => {
         const val = e.target.value;
@@ -26,36 +25,58 @@ class CreatePlanForm extends Component {
         })
     };
 
+    handlePlanName = (e) => {
+        const val = e.target.value;
+        this.setState({
+            planName: val
+        })
+    };
 
+
+    submitHandler = () => {
+        const data = this.state.exercises;
+        data.forEach((el) => {
+            fetch('http://localhost:4005/Workouts', {
+                method : 'POST',
+                body: JSON.stringify( el ),
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            }).then( resp => resp.json())
+                .then( data => {
+                    console.log( data );
+                });
+        })
+
+    };
 
 
 
     render() {
-        console.log(this.state.exercises);
         return(
             <div className="form-wrapper">
                 <form className="plan-form" onSubmit={this.handleSubmit}>
-                    {/*<label className="plan-form__workout-number" >How many workouts are you planning?*/}
-                        {/*<div className="label-content-wrapper">*/}
-                            {/*<input className="plan-form__workout-number-input" type="text" onChange={this.handleWorkoutsChange} value={this.state.workoutsChange} />*/}
-                            {/*<button className="plan-form__workout-number-btn" onClick={this.addExercisesForm}><i className="far fa-plus-square"></i> Add workouts</button>*/}
-                        {/*</div>*/}
-                    {/*</label>*/}
+                    <label className="plan-form__plan-name">
+                        Name of the Plan
+                        <input type="text" id="planName" className="plan-form__plan-name-input" onChange={this.handlePlanName}/>
+                    </label>
+
                     <label className="plan-form__workout-name">
                         Name of the workout
                         <input type="text" id="workoutName" className="plan-form__workout-name-input" onChange={this.handleWorkoutName}/>
                     </label>
                         <div className="plan-form__workoutElement">
-                            <FormWorkout getExercises={this.handleGetExercises} workoutName={this.state.workoutName}/>
+                            <FormWorkout getExercises={this.handleGetExercises}
+                                         getWorkouts={this.handleGetWorkouts}
+                                         workoutName={this.state.workoutName}
+                                         planName={this.state.planName}/>
                         </div>
 
-                    <button type="submit" id="addPlan" className="btn btn--white">Submit</button>
+                    <button type="submit" id="addPlan" className="btn btn--white" onClick={this.submitHandler}>Add Plan</button>
                 </form>
             </div>
         )
     }
 }
 
-
 export default CreatePlanForm
-// CreatePlanForm

@@ -5,6 +5,7 @@ class FormWorkout extends Component {
         workoutName: this.props.workoutName,
         setsNumber: '',
         exerciseName: '',
+        planName: '',
         workoutsArray: ''
     };
 
@@ -15,6 +16,7 @@ class FormWorkout extends Component {
         })
     };
 
+
     handleExerciseName = (e) => {
         const exerciseName = e.target.value;
         this.setState({
@@ -22,41 +24,35 @@ class FormWorkout extends Component {
         })
     };
 
-
     addExercise = (e) => {
         e.preventDefault();
-        let array = [];
-        const workoutObject = {'workoutName': this.props.workoutName,
-                                'exerciseName': this.state.exerciseName,
-                                'setsNumber':this.state.setsNumber};
-        array.push(workoutObject);
+        const workoutObject = {
+            'planName': this.props.planName,
+            'workoutName': this.props.workoutName,
+            'exerciseName': this.state.exerciseName,
+            'setsNumber': this.state.setsNumber
+        };
         this.setState({
             workoutsArray: [...this.state.workoutsArray, workoutObject]
+        }, () => {
+            if (typeof this.props.getWorkouts === "function") {
+                this.props.getWorkouts()
+            }
+            let exercisesArray = this.state.workoutsArray.slice();
+            this.props.getExercises(exercisesArray)
         });
 
-        this.setState({
+        this.setState ({
             setsNumber: ''
         });
 
-        this.setState({
+        this.setState ({
             exerciseName: ''
-        });
-
-        let exercisesArray = this.state.workoutsArray;
-        this.props.getExercises(exercisesArray)
+        })
     };
-
-    // submitHandler = () => {
-    //
-    // }
-
-//Jak wyczyscic inputy? Stan maja ustawion na '' wiec czemu sie nie czyszcza?
-
 
 
     render() {
-        console.log(this.state.workoutsArray);
-
         return(
             <div className="form-workout" >
                 <label className="form-workout--label-wrapper">
@@ -68,7 +64,7 @@ class FormWorkout extends Component {
                     How many sets are you up to?
                     <input type="text" className="form-workout--workout-sets" id="exerciseSets" onChange={this.handleSetsChange}/>
                 </label>
-                <button type="submit" className="plan-form__workout-number-btn" id="addExercise" onClick={this.addExercise}>Add this exercise <i className="far fa-plus-square"></i></button>
+                <button type="submit" className="plan-form__workout-number-btn" id="addExercise" onClick={this.addExercise}>Add this exercise</button>
             </div>
         )
     }
